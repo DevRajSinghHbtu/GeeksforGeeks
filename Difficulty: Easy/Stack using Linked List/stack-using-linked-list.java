@@ -11,11 +11,11 @@
 
 // Stack class
 class myStack {
-    LinkedList<Integer> list;
+    Node list;
     int s = 0;
     public myStack() {
         // Initialize your data members
-        list = new LinkedList<>();
+        list = null;
         s = 0;
     }
 
@@ -28,15 +28,19 @@ class myStack {
 
     public void push(int x) {
         // Adds an element x at the rear of the stack.
-       list.addFirst(x);
-        s++;
+       Node node = new Node(x);
+      node.next = list;
+      list = node;
+       s++;
     }
 
     public void pop() {
         // Removes the front element of the stack.
-        if(!list.isEmpty())
+        if(list != null)
         {
-            list.removeFirst();
+           Node temp = list;
+           list = list.next;
+           temp = null;
         s--;
         }
         
@@ -45,9 +49,9 @@ class myStack {
     public int peek() {
         // Returns the front element of the stack.
         // If stack is empty, return -1.
-        if(!list.isEmpty())
+        if(list != null)
         {
-            return list.getFirst();
+           return list.data;
         }
         return -1;
         

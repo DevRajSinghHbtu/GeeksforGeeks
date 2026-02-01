@@ -35,8 +35,8 @@ int s =0;
        }
        else
        {
-           tail.next = node;
-           tail = node;
+            tail.next = node;  
+            tail = node;
        }
        s++;
     }
